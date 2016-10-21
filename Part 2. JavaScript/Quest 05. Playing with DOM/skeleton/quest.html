@@ -33,18 +33,39 @@
 		</section>
 
 		<script>
-			var row1Squares = document.querySelectorAll('.row1 .square');
+			// 첫 줄 박스의 색을 변화시키는 함수
+			function changeBackground() {
+				// this.style.backgroundColor = "yellow";
+				if ( this.style.backgroundColor == "yellow" )
+					this.style.backgroundColor = "white";
+				else
+					this.style.backgroundColor = "yellow";
+			}
 
+			// 첫째 줄 박스 선택해서 배열로 저장
+			var row1Squares = document.querySelectorAll('.row1 .square');
+			// 첫째 줄 박스 이벤트
 			for(var i = 0; i < row1Squares.length; i++) {
 				var node = row1Squares[i];
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+				node.addEventListener( "click", changeBackground );
 			}
 
+			// 둘째 줄 박스 선택해서 배열로 저장
 			var row2Squares = document.querySelectorAll('.row2 .square');
+
+			function changeClass() {
+				this.className = "square enabled";
+				for(var i = 0; i < row2Squares.length; i++) {
+					if ( row2Squares[ i ] != this )
+						row2Squares[ i ].className = "square";
+				}
+			}
 
 			for(var i = 0; i < row2Squares.length; i++) {
 				var node = row2Squares[i];
 				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+				node.addEventListener( "click", changeClass );
 			}
 		</script>
 	</body>
